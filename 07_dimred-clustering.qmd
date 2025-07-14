@@ -1,3 +1,61 @@
-# 07_Dimred Clustering
+---
+title: "Dimensionality Reduction & Clustering"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+```{r, include=FALSE}
+library(RUHi)
+myobj <- readRDS("demo2.rds")
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="06_filtering-processing.qmd" class="btn btn-outline-secondary">⟵ Previous: Filtering & Processing</a> <a href="08_visualization.qmd" class="btn btn-primary">Next: Visualization ⟶</a>
+:::
+
+## Video Tutorial
+
+The following video tutorial demonstrates the functionality of `ruUMAP`() and `ruCluster()`, two functions that dimensionally reduce and hierarchically (method = "ward.D2") cluster the data.
+
+*Note that UMAPs have built-in stochasticity, meaning they will look different between computers*
+
+Follow along with the code below.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/BZINf1FQkec" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## Running a UMAP with  `ruUMAP()`
+
+Once run, you can access the UMAP coordinates in the attributes (`@attributes$umap`).
+
+```{r}
+#populate attributes with UMAP for plotting
+#you can use the optional argument npc to  select more or less PCs
+myobj <- ruUMAP(myobj)
+```
+
+## Clustering with  `ruCluster()`
+
+This function clusters the data using ward D2 hierarchical clustering. Select a number of clusters you beleive the data might have. Once run, a new `@metaData` column will be generated. 
+
+To refine the number of clusters, check the dendrogram with `plotDendro()` and re-run `ruCluster()` as many times as you see fit.
+
+```{r}
+#populate metaData with cluster column
+myobj <- ruCluster(myobj, k = 5)
+
+#check the dendrogram to see if you agree with number of clusters
+plotDendro(myobj)
+```
+
+
+```{r include=FALSE}
+saveRDS(myobj, "demo3.rds")
+```
+
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="06_filtering-processing.qmd" class="btn btn-outline-secondary">⟵ Previous: Filtering & Processing</a> <a href="08_visualization.qmd" class="btn btn-primary">Next: Visualization ⟶</a>
+:::

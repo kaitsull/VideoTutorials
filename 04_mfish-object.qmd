@@ -1,3 +1,88 @@
-# 04_Mfish Object
+---
+title: "The mFISH Object"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+```{r, include=FALSE}
+library(RUHi)
+
+mydata <- read.csv("mFISH_cla_123456_1.csv")
+mydata <- dplyr::select(mydata, -X.1)
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="03_reading-files.qmd" class="btn btn-outline-secondary">⟵ Previous: Reading Files</a> <a href="05_gofish-app.qmd" class="btn btn-primary">Next: The goFISH App ⟶</a>
+:::
+
+## Video Tutorial
+
+The following video tutorial demonstrates the structure of the formal mFISH class object. 
+
+Read below for code and a visual representation of the mFISH object's structure.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/FtTieoBpY5A" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## Creating an `mFISH` Object with `ruMake()`
+```{r}
+######### STEP 2: CREATE YOUR OBJECT #########
+#take your individual section or combined dataset and turn it into an mFISH object for analysis
+
+myobj <- ruMake(mydata)
+```
+
+```{r}
+# Save your analysis object at any point using saveRDS()
+
+saveRDS(myobj, 'demo.rds')
+
+# Read it back in with readRDS()
+# myobj <- readRDS('demo.rds')
+```
+
+## `mFISH` Object Structure
+
+![](images/mFISH.png)
+
+The mFISH object contains four slots:
+
+#### `@rawData`
+
+This contains the original data frame, without metadata, from `ruRead()`.  
+
+```{r}
+head(myobj@rawData)
+```
+
+#### `@filteredData`
+
+This contains a data frame of the normalized and filtered data from downstream analysis. 
+
+For now this is empty, however this slot will be populated automatically during analysis with the `goFISH` Shiny app or generated via `ruFilter()` and `ruProcess()`).  
+
+```{r}
+head(myobj@filteredData)
+```
+
+#### `@metaData`
+
+This contains a data frame of all the metadata from the initial `ruRead()` data frame.  
+
+```{r}
+head(myobj@rawData)
+```
+
+#### `@attributes`
+
+This contains a list of all the important variables used throughout analysis to assist with code reproducibility.  
+
+```{r}
+head(myobj@attributes)
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="03_reading-files.qmd" class="btn btn-outline-secondary">⟵ Previous: Reading Files</a> <a href="05_gofish-app.qmd" class="btn btn-primary">Next: The goFISH App ⟶</a>
+:::

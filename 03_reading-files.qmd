@@ -1,3 +1,64 @@
-# 03_Reading Files
+---
+title: "Reading Files"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+```{r, include=FALSE}
+library(RUHi)
+```
+
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="02_file-setup-ruhi.qmd" class="btn btn-outline-secondary">⟵ Previous: CSV File Formatting</a> <a href="04_mfish-object.qmd" class="btn btn-primary">Next: The mFISH Object ⟶</a>
+:::
+
+## Video Tutorial
+
+In this video, we go over how to use ruRead() to take our multiple gene CSVs output from FijiFISH and amalgamate them into a single data frame. 
+
+See the code below to follow along with the analyses.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/W6OTkTxZJVU" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## Reading files with `ruRead()`
+
+We will use `ruRead()` to read all of the gene expression FIJI Quantification files into a single data frame. 
+
+The primary argument is the path to the folder holding all of the gene CSVs from FijiFISH. You must also fill out at least three metadata variables for image identification during plotting and analysis down the line.   
+
+```{r}
+####### STEP 1a: READING FILES FROM FIJI QUANTIFICATION #########
+#here we are using an example dataset from our 2021 eLife paper - https://elifesciences.org/articles/68967
+
+#the data is deposited both within this repository as well as on FigShare, but it is preferable to use your own files generated from FijiFISH!
+
+mydata <- ruRead("data", region = "cla", anum = "123456", section = "1")
+
+#make sure all your genes are names correctly before continuing
+#you should have columns named X,Y,id,region,section,anum and all of your genes
+head(mydata)
+
+#feel free to add extra metadata for your section at this point with dplyr::mutate()
+```
+
+In the plausible case where we have multiple images that we want to analyze together, we will use `ruCombine()` to concatenate multiple data frames from separate experiments.
+
+Ensure that the analyzed tables from each experiment are in their own separate folders. Then generate a data frame for each using `ruRead()`. Finally, concatenate them together using `ruCombine()`.
+
+*IMPORTANT: Ensure you have unique section ids for each image in the metadata so you can properly separate each image from another in the downstream analysis*
+
+``` r
+####### STEP 1b: COMBINING MULTIPLE SECTIONS #######
+#if you have multiple sections you can save multiple experiments as a data.frame using ruRead()
+#to combine them use: 
+
+combo <- ruCombine(c(data1, data2, data3))
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="02_file-setup-ruhi.qmd" class="btn btn-outline-secondary">⟵ Previous: CSV File Formatting</a> <a href="04_mfish-object.qmd" class="btn btn-primary">Next: The mFISH Object ⟶</a>
+:::

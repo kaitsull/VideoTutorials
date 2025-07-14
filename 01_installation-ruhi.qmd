@@ -1,0 +1,73 @@
+---
+title: "Installing RUHi"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="06_overlay.qmd" class="btn btn-outline-secondary">⟵ Previous: Overlay (FijiFISH)</a> <a href="02_file-setup-ruhi.qmd" class="btn btn-primary">Next: CSV File Formatting ⟶</a>
+:::
+
+## Video Tutorial
+
+The RUHi package can be installed from either the cembrowskilab or kaitsull repos. You can install the latest version directly from GitHub using the **`devtools`** package.
+
+See below for copy-and-paste code to follow along with the video!
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/RyQc9qPESL4" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## Step-by-Step Code
+
+### Step 1: Install from GitHub
+
+Make sure you have `devtools` installed:
+
+``` r
+install.packages("devtools")
+```
+
+Then install RUHi:
+
+``` r
+devtools::install_github("kaitsull/RUHi")
+```
+
+### Step 2: Load the Package
+
+``` r
+library(RUHi)
+```
+
+## Updating the Package
+
+If you already have RUHi installed and want to update it:
+
+``` r
+# Remove the old version
+remove.packages("RUHi")
+
+# Install the latest version
+devtools::install_github("kaitsull/RUHi")
+```
+
+## Downloading Errors
+
+If you recieve the following error:
+
+> Using github PAT from envvar GITHUB_PAT\
+> Error: Failed to install 'unknown package' from GitHub:\
+> HTTP error 401. Bad credentials.
+
+Use the following line of code:
+
+``` r
+Sys.unsetenv("GITHUB_PAT")
+devtools::install_github("cembrowskilab/RUHi")
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="06_overlay.qmd" class="btn btn-outline-secondary">⟵ Previous: Overlay (FijiFISH)</a> <a href="02_file-setup-ruhi.qmd" class="btn btn-primary">Next: CSV File Formatting ⟶</a>
+:::

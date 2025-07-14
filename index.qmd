@@ -1,8 +1,85 @@
 ---
-title: "RUHi Tutorial Hub"
+title: "Welcome!"
 format: html
 ---
 
-# Welcome
 
-This is the hub for all your FijiFISH and RUHi tutorials. Choose a section from the navbar to get started.
+This is your hub for all FijiFISH and RUHi tutorials.  
+Select an image below to get started or choose a section from the navbar!
+
+```{=html}
+<style>
+  .image-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .hover-image-wrapper {
+    text-align: center;
+    width: 45%;
+    max-width: 600px;
+  }
+
+  .hover-image-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hover-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .hover-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    width: 100%;
+  }
+
+  .hover-image-container:hover .hover-top {
+    opacity: 1;
+  }
+
+  .hover-caption {
+    display: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-top: 0.5rem;
+  }
+
+  .hover-image-wrapper:hover .hover-caption {
+    display: block;
+  }
+</style>
+
+<div class="image-row">
+  <div class="hover-image-wrapper">
+    <a href="01_installation-fiji.qmd">
+      <div class="hover-image-container">
+        <img src="images/bla.png" alt="FijiFISH Tutorial">
+        <img class="hover-top" src="images/fijiFISH.png" alt="FijiFISH Hover">
+      </div>
+      <div class="hover-caption">🎣 FijiFISH Tutorial 🎣</div>
+    </a>
+  </div>
+
+  <div class="hover-image-wrapper">
+    <a href="01_installation-ruhi.qmd">
+      <div class="hover-image-container">
+        <img src="images/bla-ruhi.png" alt="RUHi Tutorial">
+        <img class="hover-top" src="images/meowparty.gif" alt="RUHi Hover">
+      </div>
+      <div class="hover-caption">🎣 RUHi Tutorial 🎣</div>
+    </a>
+  </div>
+</div>
+
+```

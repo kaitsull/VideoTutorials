@@ -1,3 +1,82 @@
-# 08_Visualization
+---
+title: "Visualization"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+```{r, include=FALSE}
+library(RUHi)
+myobj <- readRDS("demo3.rds")
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="07_dimred-clustering.qmd" class="btn btn-outline-secondary">⟵ Previous: Dimensionality Reduction & Clustering</a> <a href="09_geographic-analysis.qmd" class="btn btn-primary">Next: Geographic Analysis ⟶</a>
+:::
+
+## Video Tutorial
+
+The following video tutorial demonstrates some of the ways you can visualize mFISH data.
+
+See code below for some basic plotting functions.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/DKMQuPOA8Ns" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## Plotting Functions
+
+#### Geographic Space  
+  
+```{r}
+######### STEP 4: PLOTTING #########
+
+### GEOGRAPHIC SPACE with plotSpace()
+#plot in space - automatically coloured by cluster
+plotSpace(myobj)
+
+#optional args to group by section, or other variable (eg cluster)
+plotSpace(myobj, group.by = 'cluster')
+
+#Plot by metadata values
+library(dplyr)
+myobj@metaData <- mutate(myobj@metaData, virus=ifelse(LEC>3, 'LEC', ifelse(RSC>3, 'RSC', 'None')))
+plotSpace(myobj, colour.by = "virus")
+
+#plot in space but change to a gene or metadata value
+plotSpace(myobj, colour.by = 'Gnb4', include.fil = F)
+
+#plot in space with separation by cluster (group.by is useful for viewing multiple sections as well)
+plotSpace(myobj, group.by = 'cluster', colour.by = 'Gnb4')
+```
+  
+#### Dimensionally Reduced Space  
+  
+```{r}
+### DIM REDUCED SPACE with plotDim()
+#auto coloured by cluster
+plotDim(myobj)
+
+#option to colour by gene/metadata 
+plotDim(myobj, colour.by='Gnb4')
+plotDim(myobj, colour.by = 'virus')
+```
+  
+#### Gene Expression Box Plots  
+  
+```{r}
+### MARKER GENE BOX PLOTS
+
+#Plot a gene's expression across clusters
+geneBoxPlot(myobj, 'Gnb4')
+
+#Plot the gene expression profile of a specified cluster
+clusterBoxPlot(myobj, clus='5')
+
+#or simply plot the gene expression for every cluster
+clusterBoxPlot(myobj)
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="07_dimred-clustering.qmd" class="btn btn-outline-secondary">⟵ Previous: Dimensionality Reduction & Clustering</a> <a href="09_geographic-analysis.qmd" class="btn btn-primary">Next: Geographic Analysis ⟶</a>
+:::

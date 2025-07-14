@@ -1,3 +1,42 @@
-# 06_Overlay
+---
+title: "Overlaying"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="05_quantification.qmd" class="btn btn-outline-secondary">⟵ Previous: Quantification</a> <a href="01_installation-ruhi.qmd" class="btn btn-primary">Next: Installing RUHi ⟶</a>
+:::
+
+## Video Tutorial
+
+Here we will make opaque overlays to circumvent `Merge Channels...`'s 7-channel limit as well as the avoiding additively combining colours.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/br7BDSGrWuM" width="640" height="360" allowfullscreen></iframe>
+:::
+
+
+## `HiPlex Overlay`
+
+This option creates a representative overlay image of your binarized gene expression images.
+
+1.  Download the `.lut` files from [here](https://github.com/cembrowskilab/HiPlexMenu/tree/main/luts)
+2.  Place them in the FIJI `lut` folder
+3.  Re-start Fiji
+
+**TO RUN:** - Drag-and-drop your first gene image from the `overlay` folder into FIJI and select `HiPlex Overlay` from the menu
+
+**WHAT HAPPENS:**\
+- When running, images will be opaquely overlaid and the order and colours of the images will print out in the `Log` box.
+
+**OUTPUT:**\
+- The image will save in the `overlay` folder as `TestCOMP.png`.
+
+**DRAWBACKS AND WORKAROUNDS** *In the future, there will be a plug-in option to change the colours and order of overlay images*\
+- Right now this only allows up to 12 colours without any control over their order or assigned colour. - To **create a manual overlay image**: pseudocolour according to prefered image colours and and use FIJI's `Image` -\> `Overlay...` -\> `Add Image` with zero background checked!
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="05_quantification.qmd" class="btn btn-outline-secondary">⟵ Previous: Quantification/a\> <a href="01_installation-ruhi.qmd" class="btn btn-primary">Next: Installing RUHi ⟶</a>
+:::

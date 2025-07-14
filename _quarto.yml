@@ -2,48 +2,41 @@ project:
   type: website
 
 website:
-  title: "RUHi Tutorial Hub"
+  title: "🎣 mFISH Tutorial Hub 🎣"
   navbar:
     left:
-      - text: "FijiFISH"
+      - text: "FijiFISH Tutorial"
         menu:
-          - text: "01_Installation"
-            href: 01_installation.qmd
-          - text: "02_File Structure"
-            href: 02_file-structure.qmd
-          - text: "03_Registration"
+          - text: "Installing FijiFISH"
+            href: 01_installation-fiji.qmd
+          - text: "Image File Structure"
+            href: 02_file-structure-fiji.qmd
+          - text: "Registration"
             href: 03_registration.qmd
-          - text: "04_Segmentation"
+          - text: "Segmentation"
             href: 04_segmentation.qmd
-          - text: "05_Quantification"
+          - text: "Quantification"
             href: 05_quantification.qmd
-          - text: "06_Overlay"
+          - text: "Overlay"
             href: 06_overlay.qmd
-          - text: "07_Single Round mFISH"
-            href: 07_single-round-mfish.qmd
-          - text: "08_Customization"
-            href: 08_customization.qmd
-      - text: "RUHi"
+      - text: "RUHi Tutorial"
         menu:
-          - text: "01_Installation"
-            href: 01_installation.qmd
-          - text: "02_File Setup"
-            href: 02_file-setup.qmd
-          - text: "03_Reading Files"
+          - text: "Installing RUHi"
+            href: 01_installation-ruhi.qmd
+          - text: "CSV File Setup"
+            href: 02_file-setup-ruhi.qmd
+          - text: "Reading Files"
             href: 03_reading-files.qmd
-          - text: "04_The mFISH Object"
+          - text: "The mFISH Object"
             href: 04_mfish-object.qmd
-          - text: "05_The goFISH App"
+          - text: "The goFISH App"
             href: 05_gofish-app.qmd
-          - text: "06_Filtering Processing"
+          - text: "Filtering & Processing"
             href: 06_filtering-processing.qmd
-          - text: "07_Dimensionality Reduction & Clustering"
+          - text: "Dimensionality Reduction & Clustering"
             href: 07_dimred-clustering.qmd
-          - text: "08_Visualization"
+          - text: "Visualization"
             href: 08_visualization.qmd
-          - text: "09_Geographic Analysis"
+          - text: "Geographic Analysis"
             href: 09_geographic-analysis.qmd
-          - text: "10_Bespoke Analysis"
-            href: 10_bespoke-analysis.qmd
-          - text: "11_Multi Section Analysis"
-            href: 11_multi-section-analysis.qmd
+

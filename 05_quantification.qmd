@@ -1,3 +1,43 @@
-# 05_Quantification
+---
+title: "Quantification"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="04_segmentation.qmd" class="btn btn-outline-secondary">⟵ Previous: Segmentation</a> <a href="06_overlay.qmd" class="btn btn-primary">Next: Overlaying ⟶</a>
+:::
+
+## Video Tutorial
+
+Now we will binarize the *in situ* signal for each gene and quantify the optical area coverage within each nucleus. The output will be a series of CSV files that can be read into RUHi.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/2qyqvmgqTgk" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## `Quantification`
+
+This option takes individual gene expression images from the `nonLinear` folder and quantifies their expression into tables saved in the `analyzedTables` folder.
+
+*Run from the `nonLinear` folder...* ├── `max`\
+      └── `crop`\
+            └── `regImages`\
+            ├── `composite`\
+            └── `nonLinear` \_\_\<- Drag *first channel* from this folder\*\*\*\_\_\
+                  └── `analyzedTables`
+
+**TO RUN:**\
+- Drag-and-drop your first gene image from the `nonLinear` folder into FIJI and select `Quantification` from the menu
+
+**WHAT HAPPENS:**\
+- `Automatic thresholding` will take the provided tail of the image's cumulative histogram via *MaxEntropy*\
+- `Manual thresholding` allows one to manually select the threshold for each image (*useful in cases of autofluorescence*)
+
+**OUTPUT:**\
+- Quantified tables for [`RUHi`](https://github.com/cembrowskilab/RUHi) analysis in `analyzedTables` folder`-   Quantified image overlays for quality control in the`analyzedImages\` folder
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="04_segmentation.qmd" class="btn btn-outline-secondary">⟵ Previous: Segmentation</a> <a href="06_overlay.qmd" class="btn btn-primary">Next: Overlays ⟶</a>
+:::

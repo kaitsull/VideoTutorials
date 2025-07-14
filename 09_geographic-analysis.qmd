@@ -1,3 +1,15 @@
-# 09_Geographic Analysis
+---
+title: "Geographic Analysis"
+author: "Margarita Kapustina"
+format: html
+---
 
-Write your content here.
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="08_visualization.qmd" class="btn btn-outline-secondary">⟵ Previous: Visualization</a>
+:::
+
+## Tutorial here :)
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="08_visualization.qmd" class="btn btn-outline-secondary">⟵ Previous: Visualization</a>
+:::

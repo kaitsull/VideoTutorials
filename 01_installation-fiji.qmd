@@ -1,0 +1,40 @@
+---
+title: "Installing FijiFISH"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
+
+<a href="02_file-structure-fiji.qmd" class="btn btn-primary">Next: Image File Structure ⟶</a>
+
+## Video Tutorial
+
+The FijiFISH macro package is installed as a dropdown menu on your Fiji toolbar. It can either be permanently or temporarily installed.
+
+See below for written instructions.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/dGNY2dSX9QM" width="640" height="360" allowfullscreen></iframe>
+:::
+
+### Permanent
+
+*This installation ensures each time you open up FIJI the menu is already installed. To update you will simply replace the existing code with the new version.*\
+1. Copy the raw contents of the [latest version](https://github.com/cembrowskilab/HiPlexMenu/blob/main/fijiFISH-v505.ijm) of the menu\
+2. Open your FIJI app\
+3. *Plug-ins* -\> *Macros* -\> *Startup Macros*\
+4. Paste the code at the very bottom of the StartupMacros.txt\
+5. Download LUT files and put in the FIJI lut folder (only if you want to use the HiPlex Overlay function)\
+6. Close and restart your FIJI app\
+7. You will now see the happy hippocampus icon in your FIJI!
+
+### Temporary
+
+*This installation is useful for using the menu when on shared computers or read-only versions of FIJI. You will need to re-install the macro each time you open a new FIJI session.*\
+1. Save the [latest version](https://github.com/kaitsull/HiPlexMenu/blob/main/fijiFISH-v505.ijm) of the menu as a `.ijm` file\
+2. Open your FIJI app\
+3. From the top menu select: *Plug-ins* -\> *Macros* -\> *Install*\
+4. Select `FijiFISH-v5.ijm` from wherever you have it saved\
+5. You will now see the happy hippocampus icon in your FIJI for the remainder of your session. 6. HiPlex Overlay currently does not work on read-only versions of FIJI
+
+<a href="02_file-structure-fiji.qmd" class="btn btn-primary">Next: Image File Structure ⟶</a>

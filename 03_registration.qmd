@@ -1,3 +1,37 @@
-# 03_Registration
+---
+title: "Registration"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="02_file-structure-fiji.qmd" class="btn btn-outline-secondary">⟵ Previous: File Formatting</a> <a href="04_segmentation.qmd" class="btn btn-primary">Next: Segmentation ⟶</a>
+:::
+
+## Video Tutorial
+
+Here, we take multiple rounds of imaging and register them together. First, we register linearly using Fast Fourier Transform cross correlation to find the optimal coordinates where the images overlap. Then we nonlinearly register using the bUnwarpJ package, elasticly warping any irregularities due to uncoverslipping. The first round of imaging is always used as the template image for registration.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/Bx-80l3ufCg" width="640" height="360" allowfullscreen></iframe>
+:::
+
+
+## `Registration`
+
+This option takes the original images and registers them together based on their DAPI expression.
+
+**TO RUN:** - Drag-and-drop `R1_405_DAPI.tif` into FIJI and select `Registration`.
+
+**WHAT HAPPENS:**\
+- Images will have maximum intensity projections taken and saved in a `max` folder\
+- Images will be croped to be the same size and saved in a `crop` folder\
+- Automatic Cropping: puts a box in the upper left corner of each image (auto-choice for `Automated Run`)\
+- Manual Cropping: allows one to move the location of the box (**be careful not to change the size of the box or move it form the limits however**)\
+- Images will be linearly registered to eachother and saved in a `regImages` folder\
+- Images will be nonlinearly registered to eachother and saved in a `nonLinear` folder
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="02_file-structure-fiji.qmd" class="btn btn-outline-secondary">⟵ Previous: File Formatting</a> <a href="04_segmentation.qmd" class="btn btn-primary">Next: Segmentation ⟶</a>
+:::

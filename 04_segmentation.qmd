@@ -1,3 +1,48 @@
-# 04_Segmentation
+---
+title: "Segmentation"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="03_registration.qmd" class="btn btn-outline-secondary">⟵ Previous: Registration</a> <a href="05_quantification.qmd" class="btn btn-primary">Next: Quantification ⟶</a>
+:::
+
+## Video Tutorial
+
+Here, we binarize and multiply our DAPI images to get only cells present in all three images for segmentation. Then, we select the region of tissue we would like to segment and the dilation value for the nuclei after they are segmented.
+
+If using external segmentation methods, save the output as Fiji-readable ROIs named `RoiSet.zip`, place the file in a folder called `analyzedTables`, and skip straight to Quantification.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/YVBeG-lHdxk" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## `Segmentation`
+
+This option takes the registered DAPI images from the `nonLinear` folder and segments them.\
+The DAPI from each round will be binarized then multiplied by eachother to remove cells from out-of-focus planes.
+
+**TO RUN:**\
+- Drag-and-drop `R1_405_DAPI.tif_registered.tif_NL.tif` from the `nonLinear` folder into FIJI and select `Segmentation`.
+
+*Run from the `nonLinear` folder...*\
+├── `max` └── `crop` └── `regImages` ├── `composite` └── `nonLinear`\_\_\<- drag DAPI file from this folder\*\*\*\_\_
+
+**WHAT HAPPENS:** \
+- Segmentation Type: *select DAPI*\
+- Segment based on DAPI signal from every round (to ensure registration in the z-axis)\
+- If there is a round where DAPI is not segmentable, uncheck it - Threshold Type: *binarize the images for segmentation*\
+- Automatic Thresholding\
+- Manual Thresholding: (select threshold manually with a slider if some DAPI rounds look strange via Automatic Thresholding) - Dialation Value: *dilate ROIs to include the surrounding cytosol*\
+- Suggested Value = `3 microns`\
+- For densly packed regions or nuclear expression only, change value to `0 microns`
+
+-   Segmented image is saved in an `analyzedImages` folder
+-   Segmented ROIs are saved in `analyzedTables` folder
+-   ***IF USING EXTERNAL SEGMENTATION ALGORITHMS***: for Baysor, Weka, or CellPose, place your Fiji-readable ROIs as `RoiSet.zip` in `analyzedTables` and skip straight to Quantification.
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="03_registration.qmd" class="btn btn-outline-secondary">⟵ Previous: Registration</a> <a href="05_quantification.qmd" class="btn btn-primary">Next: Quantification ⟶</a>
+:::

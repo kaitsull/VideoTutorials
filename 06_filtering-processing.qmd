@@ -1,3 +1,76 @@
-# 06_Filtering Processing
+---
+title: "Filtering & Processing"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
 
-Write your content here.
+
+```{r, include=FALSE}
+library(RUHi)
+myobj <- readRDS("demo.rds")
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="05_gofish-app.qmd" class="btn btn-outline-secondary">⟵ Previous: The goFISH App</a> <a href="07_dimred-clustering.qmd" class="btn btn-primary">Next: Dimensionality Reduction & Clustering ⟶</a>
+:::
+
+## Video Tutorial
+
+The following video tutorial demonstrates the functionality of `ruFilter`() and `ruProcess()`, two functions that filter and normalize the data, as well as run a Principal Component Analysis (PCA).
+
+Follow along with the code below.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/ZCy-OdDLzik" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## Filtering by Gene Expression with `ruFilter()`
+
+```{r}
+#These steps happen automatically within the Shiny App
+#doing them manually simply gives you more autonomy over the individual steps
+
+### FILTERING
+#here we filter for excitatory cells which are Slc17a7+
+myobj <- ruFilter(myobj, filter.by = 'Slc17a7', threshold = 0.1, exclude = c('RSC', 'LEC'))
+```
+
+This step will populate the `@filteredData` slot with the data frame filtered to only include cells with an **_Slc17a7_** value > 0.1
+
+It will also exclude the filtering gene and any others that you choose to exclude. Here we have excluded the viral injection data as they are not indicitive of gene expression.
+
+```{r}
+head(myobj@filteredData)
+```
+
+This step will also place any excluded variables into the `@metaData` slot and create a new `$fil` column that tells the user whether the cell is filtered out or not.
+
+```{r}
+head(myobj@metaData)
+```
+
+
+## Normalization and PCA with `ruProcess()`
+
+This function will normalize the data (option of either "log" or "PAC") as well as run a PCA.
+
+```{r}
+myobj <- ruProcess(myobj)
+```
+
+From here the `@filteredData` slot will be updated with the normalized data. The attributes will also be updated to include the PCA itself (`@attributes$pca`) and the number of PC's contributing ~95% variance to the data (`@attributes$npc`).
+
+We can visualize this using `plotVar()`. The red line indicates the number of PCs that will automatically be used if the user doesn't override this choice.
+
+```{r}
+plotVar(myobj)
+```
+
+```{r, include=FALSE}
+saveRDS(myobj, "demo2.rds")
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="05_gofish-app.qmd" class="btn btn-outline-secondary">⟵ Previous: The goFISH App</a> <a href="07_dimred-clustering.qmd" class="btn btn-primary">Next: Dimensionality Reduction & Clustering ⟶</a>
+:::

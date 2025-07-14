@@ -1,0 +1,54 @@
+---
+title: "File Formatting"
+author: "Kaitlin Sullivan"
+format: html
+editor: visual
+---
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="01_installation-fiji.qmd" class="btn btn-outline-secondary">⟵ Previous: Installing FijiFISH</a> <a href="03_registration.qmd" class="btn btn-primary">Next: Registration ⟶</a>
+:::
+
+## Video Tutorial
+
+All images used in the tutorial, as well as in the paper, can be found on [FigShare](https://figshare.com/articles/dataset/Downsampled_images_for_FijiFISH_tutorial/28910930).
+
+Review the following important information below for formatting conventions for FijiFISH as well as tips on how to ensure a smooth process from start to finish.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/kjH3aKzXaSM" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## File Conventions
+
+### ROIs
+
+Tips for smooth image analysis: - Save ROI for first round on the microscope and re-load it for subsequent imaging rounds - Ensure same zoom and resolution across rounds\
+- Be wary of high laser gain and intensity with low expressors
+
+### Image Files
+
+Files used in the FIJI app **must be**:\
+- `.tif` files\
+- `8-bit` images\
+- Scaled in **microns**\
+- Named as such: \*\*R#\_XXX_Genename\*\* (eg: `R1_405_DAPI`) - #= the imaging round number - XXX= the fluorophore excitation wavelength\
+- Files from *all rounds* must be saved in the same file folder
+
+*Example file folder for analysis...*\
+![](images/max.png)
+
+*Example output file folder structure **after analysis is complete**...*\
+├── `max`\
+      └── `crop`\
+            └── `regImages`\
+            ├── `composite` DAPI overlays from registration\
+            └── `nonLinear`\
+                        ├── `analyzedImages` binarized images with ROIs\
+                        ├── `analyzedTables` tables for [RUHi](https://github.com/cembrowskilab/RUHi)\
+                        ├── `correctedImages` images with background correction\
+                        └── `overlay` binarized images
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="01_installation-ruhi.qmd" class="btn btn-outline-secondary">⟵ Previous: Installing FijiFISH</a> <a href="03_registration.qmd" class="btn btn-primary">Next: Registration ⟶</a>
+:::

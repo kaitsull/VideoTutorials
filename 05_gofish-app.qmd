@@ -1,3 +1,43 @@
-# 05_Gofish App
+---
+title: "The goFISH App"
+author: "Kaitlin Sullivan"
+format: html
+---
 
-Write your content here.
+```{r, include=FALSE}
+library(RUHi)
+myobj <- readRDS("demo.rds")
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="04_mfish-object.qmd" class="btn btn-outline-secondary">⟵ Previous: The mFISH Object</a> <a href="06_filtering-processing.qmd" class="btn btn-primary">Next: Filtering & Processing ⟶</a>
+:::
+
+## Video Tutorial
+
+The following video tutorial demonstrates the functionality of `goFISH()`.
+
+::: {.center}
+<iframe src="https://www.youtube.com/embed/BcCszgRHR-g" width="640" height="360" allowfullscreen></iframe>
+:::
+
+## Running the `goFISH` Shiny App
+
+This app allows users to previous and do basic analyses in a code-free manner. The app will work very slowly for multi-section analysis, but is a great first step in exploring individual images.
+
+```r
+######### STEP 3: ANALYZE WITH goFISH #########
+#use your mFISH object and optionally select a gene to filter by or the number of clusters you would like
+
+goFISH(myobj, filter.by="Slc17a7", k=5)
+
+#when you are happy with the way your analysis looks, press "Download Object"
+#to read back in your saved .RDS file, simply use:
+myobj <- readRDS(path/to/object)
+
+#you can then skip straight to the plotting steps - or redo other steps if you want
+```
+
+::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}
+<a href="04_mfish-object.qmd" class="btn btn-outline-secondary">⟵ Previous: The mFISH Object</a> <a href="06_filtering-processing.qmd" class="btn btn-primary">Next: Filtering & Processing ⟶</a>
+:::

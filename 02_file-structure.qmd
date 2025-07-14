@@ -1,3 +1,0 @@
-# 02_File Structure
-
-Write your content here.
