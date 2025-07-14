@@ -1,0 +1,338 @@
+[
+  {
+    "objectID": "03_registration.html",
+    "href": "03_registration.html",
+    "title": "Registration",
+    "section": "",
+    "text": "⟵ Previous: File Formatting Next: Segmentation ⟶"
+  },
+  {
+    "objectID": "03_registration.html#video-tutorial",
+    "href": "03_registration.html#video-tutorial",
+    "title": "Registration",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nHere, we take multiple rounds of imaging and register them together. First, we register linearly using Fast Fourier Transform cross correlation to find the optimal coordinates where the images overlap. Then we nonlinearly register using the bUnwarpJ package, elasticly warping any irregularities due to uncoverslipping. The first round of imaging is always used as the template image for registration."
+  },
+  {
+    "objectID": "03_registration.html#registration",
+    "href": "03_registration.html#registration",
+    "title": "Registration",
+    "section": "Registration",
+    "text": "Registration\nThis option takes the original images and registers them together based on their DAPI expression.\nTO RUN: - Drag-and-drop R1_405_DAPI.tif into FIJI and select Registration.\nWHAT HAPPENS:\n- Images will have maximum intensity projections taken and saved in a max folder\n- Images will be croped to be the same size and saved in a crop folder\n- Automatic Cropping: puts a box in the upper left corner of each image (auto-choice for Automated Run)\n- Manual Cropping: allows one to move the location of the box (be careful not to change the size of the box or move it form the limits however)\n- Images will be linearly registered to eachother and saved in a regImages folder\n- Images will be nonlinearly registered to eachother and saved in a nonLinear folder\n\n⟵ Previous: File Formatting Next: Segmentation ⟶"
+  },
+  {
+    "objectID": "05_quantification.html",
+    "href": "05_quantification.html",
+    "title": "Quantification",
+    "section": "",
+    "text": "⟵ Previous: Segmentation Next: Overlaying ⟶"
+  },
+  {
+    "objectID": "05_quantification.html#video-tutorial",
+    "href": "05_quantification.html#video-tutorial",
+    "title": "Quantification",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nNow we will binarize the in situ signal for each gene and quantify the optical area coverage within each nucleus. The output will be a series of CSV files that can be read into RUHi."
+  },
+  {
+    "objectID": "05_quantification.html#quantification",
+    "href": "05_quantification.html#quantification",
+    "title": "Quantification",
+    "section": "Quantification",
+    "text": "Quantification\nThis option takes individual gene expression images from the nonLinear folder and quantifies their expression into tables saved in the analyzedTables folder.\nRun from the nonLinear folder… ├── max\n      └── crop\n            └── regImages\n            ├── composite\n            └── nonLinear __&lt;- Drag first channel from this folder***__\n                  └── analyzedTables\nTO RUN:\n- Drag-and-drop your first gene image from the nonLinear folder into FIJI and select Quantification from the menu\nWHAT HAPPENS:\n- Automatic thresholding will take the provided tail of the image’s cumulative histogram via MaxEntropy\n- Manual thresholding allows one to manually select the threshold for each image (useful in cases of autofluorescence)\nOUTPUT:\n- Quantified tables for RUHi analysis in analyzedTables folder-   Quantified image overlays for quality control in theanalyzedImages` folder\n\n⟵ Previous: Segmentation Next: Overlays ⟶"
+  },
+  {
+    "objectID": "02_file-structure-fiji.html",
+    "href": "02_file-structure-fiji.html",
+    "title": "File Formatting",
+    "section": "",
+    "text": "⟵ Previous: Installing FijiFISH Next: Registration ⟶"
+  },
+  {
+    "objectID": "02_file-structure-fiji.html#video-tutorial",
+    "href": "02_file-structure-fiji.html#video-tutorial",
+    "title": "File Formatting",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nAll images used in the tutorial, as well as in the paper, can be found on FigShare.\nReview the following important information below for formatting conventions for FijiFISH as well as tips on how to ensure a smooth process from start to finish."
+  },
+  {
+    "objectID": "02_file-structure-fiji.html#file-conventions",
+    "href": "02_file-structure-fiji.html#file-conventions",
+    "title": "File Formatting",
+    "section": "File Conventions",
+    "text": "File Conventions\n\nROIs\nTips for smooth image analysis: - Save ROI for first round on the microscope and re-load it for subsequent imaging rounds - Ensure same zoom and resolution across rounds\n- Be wary of high laser gain and intensity with low expressors\n\n\nImage Files\nFiles used in the FIJI app must be:\n- .tif files\n- 8-bit images\n- Scaled in microns\n- Named as such: **R#_XXX_Genename** (eg: R1_405_DAPI) - #= the imaging round number - XXX= the fluorophore excitation wavelength\n- Files from all rounds must be saved in the same file folder\nExample file folder for analysis…\n\nExample output file folder structure after analysis is complete…\n├── max\n      └── crop\n            └── regImages\n            ├── composite DAPI overlays from registration\n            └── nonLinear\n                        ├── analyzedImages binarized images with ROIs\n                        ├── analyzedTables tables for RUHi\n                        ├── correctedImages images with background correction\n                        └── overlay binarized images\n\n⟵ Previous: Installing FijiFISH Next: Registration ⟶"
+  },
+  {
+    "objectID": "05_gofish-app.html",
+    "href": "05_gofish-app.html",
+    "title": "The goFISH App",
+    "section": "",
+    "text": "⟵ Previous: The mFISH Object Next: Filtering & Processing ⟶"
+  },
+  {
+    "objectID": "05_gofish-app.html#video-tutorial",
+    "href": "05_gofish-app.html#video-tutorial",
+    "title": "The goFISH App",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nThe following video tutorial demonstrates the functionality of goFISH()."
+  },
+  {
+    "objectID": "05_gofish-app.html#running-the-gofish-shiny-app",
+    "href": "05_gofish-app.html#running-the-gofish-shiny-app",
+    "title": "The goFISH App",
+    "section": "Running the goFISH Shiny App",
+    "text": "Running the goFISH Shiny App\nThis app allows users to previous and do basic analyses in a code-free manner. The app will work very slowly for multi-section analysis, but is a great first step in exploring individual images.\n######### STEP 3: ANALYZE WITH goFISH #########\n#use your mFISH object and optionally select a gene to filter by or the number of clusters you would like\n\ngoFISH(myobj, filter.by=\"Slc17a7\", k=5)\n\n#when you are happy with the way your analysis looks, press \"Download Object\"\n#to read back in your saved .RDS file, simply use:\nmyobj &lt;- readRDS(path/to/object)\n\n#you can then skip straight to the plotting steps - or redo other steps if you want\n\n⟵ Previous: The mFISH Object Next: Filtering & Processing ⟶"
+  },
+  {
+    "objectID": "01_installation-fiji.html",
+    "href": "01_installation-fiji.html",
+    "title": "Installing FijiFISH",
+    "section": "",
+    "text": "Next: Image File Structure ⟶"
+  },
+  {
+    "objectID": "01_installation-fiji.html#video-tutorial",
+    "href": "01_installation-fiji.html#video-tutorial",
+    "title": "Installing FijiFISH",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nThe FijiFISH macro package is installed as a dropdown menu on your Fiji toolbar. It can either be permanently or temporarily installed.\nSee below for written instructions.\n\n\n\n\n\nPermanent\nThis installation ensures each time you open up FIJI the menu is already installed. To update you will simply replace the existing code with the new version.\n1. Copy the raw contents of the latest version of the menu\n2. Open your FIJI app\n3. Plug-ins -&gt; Macros -&gt; Startup Macros\n4. Paste the code at the very bottom of the StartupMacros.txt\n5. Download LUT files and put in the FIJI lut folder (only if you want to use the HiPlex Overlay function)\n6. Close and restart your FIJI app\n7. You will now see the happy hippocampus icon in your FIJI!\n\n\nTemporary\nThis installation is useful for using the menu when on shared computers or read-only versions of FIJI. You will need to re-install the macro each time you open a new FIJI session.\n1. Save the latest version of the menu as a .ijm file\n2. Open your FIJI app\n3. From the top menu select: Plug-ins -&gt; Macros -&gt; Install\n4. Select FijiFISH-v5.ijm from wherever you have it saved\n5. You will now see the happy hippocampus icon in your FIJI for the remainder of your session. 6. HiPlex Overlay currently does not work on read-only versions of FIJI\nNext: Image File Structure ⟶"
+  },
+  {
+    "objectID": "02_file-setup-ruhi.html",
+    "href": "02_file-setup-ruhi.html",
+    "title": "CSV File Formatting",
+    "section": "",
+    "text": "⟵ Previous: Installing RUHi Next: Reading Files ⟶"
+  },
+  {
+    "objectID": "02_file-setup-ruhi.html#video-tutorial",
+    "href": "02_file-setup-ruhi.html#video-tutorial",
+    "title": "CSV File Formatting",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nFor every image you analyze: create a new folder and copy-and-paste your analyzed tables into it. Include unique identifiers for the image such as animal/patient number and experimental condition, along with a unique tissue section id to help keep track of which folders contain each image.\nFor this tutorial, use the tables you generated during FijiFISH Quantification, or use the tables found here as well as in the GitHub repo.\nThe FigShare and repo tables are done using the full-sized image data, and thus might yield better analysis results.\n\n\n\n\n\n⟵ Previous: Installing RUHi Next: Reading Files ⟶"
+  },
+  {
+    "objectID": "08_visualization.html",
+    "href": "08_visualization.html",
+    "title": "Visualization",
+    "section": "",
+    "text": "⟵ Previous: Dimensionality Reduction & Clustering Next: Geographic Analysis ⟶"
+  },
+  {
+    "objectID": "08_visualization.html#video-tutorial",
+    "href": "08_visualization.html#video-tutorial",
+    "title": "Visualization",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nThe following video tutorial demonstrates some of the ways you can visualize mFISH data.\nSee code below for some basic plotting functions."
+  },
+  {
+    "objectID": "08_visualization.html#plotting-functions",
+    "href": "08_visualization.html#plotting-functions",
+    "title": "Visualization",
+    "section": "Plotting Functions",
+    "text": "Plotting Functions\n\nGeographic Space\n\n######### STEP 4: PLOTTING #########\n\n### GEOGRAPHIC SPACE with plotSpace()\n#plot in space - automatically coloured by cluster\nplotSpace(myobj)\n\n\n\n\n\n\n\n#optional args to group by section, or other variable (eg cluster)\nplotSpace(myobj, group.by = 'cluster')\n\n\n\n\n\n\n\n#Plot by metadata values\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nmyobj@metaData &lt;- mutate(myobj@metaData, virus=ifelse(LEC&gt;3, 'LEC', ifelse(RSC&gt;3, 'RSC', 'None')))\nplotSpace(myobj, colour.by = \"virus\")\n\n\n\n\n\n\n\n#plot in space but change to a gene or metadata value\nplotSpace(myobj, colour.by = 'Gnb4', include.fil = F)\n\n\n\n\n\n\n\n#plot in space with separation by cluster (group.by is useful for viewing multiple sections as well)\nplotSpace(myobj, group.by = 'cluster', colour.by = 'Gnb4')\n\n\n\n\n\n\n\n\n\n\nDimensionally Reduced Space\n\n### DIM REDUCED SPACE with plotDim()\n#auto coloured by cluster\nplotDim(myobj)\n\n\n\n\n\n\n\n#option to colour by gene/metadata \nplotDim(myobj, colour.by='Gnb4')\n\n\n\n\n\n\n\nplotDim(myobj, colour.by = 'virus')\n\n\n\n\n\n\n\n\n\n\nGene Expression Box Plots\n\n### MARKER GENE BOX PLOTS\n\n#Plot a gene's expression across clusters\ngeneBoxPlot(myobj, 'Gnb4')\n\n\n\n\n\n\n\n#Plot the gene expression profile of a specified cluster\nclusterBoxPlot(myobj, clus='5')\n\n\n\n\n\n\n\n#or simply plot the gene expression for every cluster\nclusterBoxPlot(myobj)\n\n\n\n\n\n\n\n\n\n⟵ Previous: Dimensionality Reduction & Clustering Next: Geographic Analysis ⟶"
+  },
+  {
+    "objectID": "06_overlay.html",
+    "href": "06_overlay.html",
+    "title": "Overlaying",
+    "section": "",
+    "text": "⟵ Previous: Quantification Next: Installing RUHi ⟶"
+  },
+  {
+    "objectID": "06_overlay.html#video-tutorial",
+    "href": "06_overlay.html#video-tutorial",
+    "title": "Overlaying",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nHere we will make opaque overlays to circumvent Merge Channels...’s 7-channel limit as well as the avoiding additively combining colours."
+  },
+  {
+    "objectID": "06_overlay.html#hiplex-overlay",
+    "href": "06_overlay.html#hiplex-overlay",
+    "title": "Overlaying",
+    "section": "HiPlex Overlay",
+    "text": "HiPlex Overlay\nThis option creates a representative overlay image of your binarized gene expression images.\n\nDownload the .lut files from here\nPlace them in the FIJI lut folder\nRe-start Fiji\n\nTO RUN: - Drag-and-drop your first gene image from the overlay folder into FIJI and select HiPlex Overlay from the menu\nWHAT HAPPENS:\n- When running, images will be opaquely overlaid and the order and colours of the images will print out in the Log box.\nOUTPUT:\n- The image will save in the overlay folder as TestCOMP.png.\nDRAWBACKS AND WORKAROUNDS In the future, there will be a plug-in option to change the colours and order of overlay images\n- Right now this only allows up to 12 colours without any control over their order or assigned colour. - To create a manual overlay image: pseudocolour according to prefered image colours and and use FIJI’s Image -&gt; Overlay... -&gt; Add Image with zero background checked!\n\n⟵ Previous: Quantification/a&gt; Next: Installing RUHi ⟶"
+  },
+  {
+    "objectID": "09_geographic-analysis.html",
+    "href": "09_geographic-analysis.html",
+    "title": "Geographic Analysis",
+    "section": "",
+    "text": "⟵ Previous: Visualization"
+  },
+  {
+    "objectID": "09_geographic-analysis.html#tutorial-here",
+    "href": "09_geographic-analysis.html#tutorial-here",
+    "title": "Geographic Analysis",
+    "section": "Tutorial here :)",
+    "text": "Tutorial here :)\n\n⟵ Previous: Visualization"
+  },
+  {
+    "objectID": "04_mfish-object.html",
+    "href": "04_mfish-object.html",
+    "title": "The mFISH Object",
+    "section": "",
+    "text": "⟵ Previous: Reading Files Next: The goFISH App ⟶"
+  },
+  {
+    "objectID": "04_mfish-object.html#video-tutorial",
+    "href": "04_mfish-object.html#video-tutorial",
+    "title": "The mFISH Object",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nThe following video tutorial demonstrates the structure of the formal mFISH class object.\nRead below for code and a visual representation of the mFISH object’s structure."
+  },
+  {
+    "objectID": "04_mfish-object.html#creating-an-mfish-object-with-rumake",
+    "href": "04_mfish-object.html#creating-an-mfish-object-with-rumake",
+    "title": "The mFISH Object",
+    "section": "Creating an mFISH Object with ruMake()",
+    "text": "Creating an mFISH Object with ruMake()\n\n######### STEP 2: CREATE YOUR OBJECT #########\n#take your individual section or combined dataset and turn it into an mFISH object for analysis\n\nmyobj &lt;- ruMake(mydata)\n\n[1] \"Creating object...\"\n\n\n\n# Save your analysis object at any point using saveRDS()\n\nsaveRDS(myobj, 'demo.rds')\n\n# Read it back in with readRDS()\n# myobj &lt;- readRDS('demo.rds')"
+  },
+  {
+    "objectID": "04_mfish-object.html#mfish-object-structure",
+    "href": "04_mfish-object.html#mfish-object-structure",
+    "title": "The mFISH Object",
+    "section": "mFISH Object Structure",
+    "text": "mFISH Object Structure\n\nThe mFISH object contains four slots:\n\n@rawData\nThis contains the original data frame, without metadata, from ruRead().\n\nhead(myobj@rawData)\n\n       Nnat      Synpr      Pcp4    Slc17a7      Cdh9      Ctgf    Slc17a6 Lxn\n1 0.1834896  0.0000000 5.5177946  0.0000000 0.7358308 0.3679154 0.73583077   0\n2 0.0000000  0.0000000 0.0000000  0.0000000 2.1668655 0.0000000 2.16686552   0\n3 0.0000000  0.0000000 0.0000000  0.6694704 0.0000000 0.0000000 1.00420555   0\n4 0.0000000  0.2438931 0.4888655 13.1972094 0.2438931 0.4888655 0.73275862   0\n5 0.1613582  0.2426580 0.8893321 38.7961045 0.3233371 0.3233371 0.08067912   0\n6 0.0000000 12.5748426 0.0000000 23.0532699 0.0000000 0.0000000 0.00000000   0\n    Slc30a3     Gfra1     Spon1      Gnb4 RSC LEC id\n1 0.0000000 0.0000000 1.1037462 0.0000000   0   0  1\n2 0.7216701 0.0000000 0.0000000 0.0000000   0   0  2\n3 0.0000000 0.3347352 0.6694704 0.6694704   0   0  3\n4 0.0000000 0.0000000 0.0000000 0.0000000   0   0  4\n5 0.4040162 0.0000000 3.1520710 2.0207016   0   0  5\n6 0.0000000 1.3976102 0.0000000 0.0000000   0   0  6\n\n\n\n\n@filteredData\nThis contains a data frame of the normalized and filtered data from downstream analysis.\nFor now this is empty, however this slot will be populated automatically during analysis with the goFISH Shiny app or generated via ruFilter() and ruProcess()).\n\nhead(myobj@filteredData)\n\ndata frame with 0 columns and 0 rows\n\n\n\n\n@metaData\nThis contains a data frame of all the metadata from the initial ruRead() data frame.\n\nhead(myobj@rawData)\n\n       Nnat      Synpr      Pcp4    Slc17a7      Cdh9      Ctgf    Slc17a6 Lxn\n1 0.1834896  0.0000000 5.5177946  0.0000000 0.7358308 0.3679154 0.73583077   0\n2 0.0000000  0.0000000 0.0000000  0.0000000 2.1668655 0.0000000 2.16686552   0\n3 0.0000000  0.0000000 0.0000000  0.6694704 0.0000000 0.0000000 1.00420555   0\n4 0.0000000  0.2438931 0.4888655 13.1972094 0.2438931 0.4888655 0.73275862   0\n5 0.1613582  0.2426580 0.8893321 38.7961045 0.3233371 0.3233371 0.08067912   0\n6 0.0000000 12.5748426 0.0000000 23.0532699 0.0000000 0.0000000 0.00000000   0\n    Slc30a3     Gfra1     Spon1      Gnb4 RSC LEC id\n1 0.0000000 0.0000000 1.1037462 0.0000000   0   0  1\n2 0.7216701 0.0000000 0.0000000 0.0000000   0   0  2\n3 0.0000000 0.3347352 0.6694704 0.6694704   0   0  3\n4 0.0000000 0.0000000 0.0000000 0.0000000   0   0  4\n5 0.4040162 0.0000000 3.1520710 2.0207016   0   0  5\n6 0.0000000 1.3976102 0.0000000 0.0000000   0   0  6\n\n\n\n\n@attributes\nThis contains a list of all the important variables used throughout analysis to assist with code reproducibility.\n\nhead(myobj@attributes)\n\n$filter.by\n[1] NA\n\n$thresh\n[1] NA\n\n$umap_nn\n[1] NA\n\n$umap_mindist\n[1] NA\n\n$umap_metric\n[1] NA\n\n$hclust_k\n[1] NA\n\n\n\n⟵ Previous: Reading Files Next: The goFISH App ⟶"
+  },
+  {
+    "objectID": "06_filtering-processing.html",
+    "href": "06_filtering-processing.html",
+    "title": "Filtering & Processing",
+    "section": "",
+    "text": "⟵ Previous: The goFISH App Next: Dimensionality Reduction & Clustering ⟶"
+  },
+  {
+    "objectID": "06_filtering-processing.html#video-tutorial",
+    "href": "06_filtering-processing.html#video-tutorial",
+    "title": "Filtering & Processing",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nThe following video tutorial demonstrates the functionality of ruFilter() and ruProcess(), two functions that filter and normalize the data, as well as run a Principal Component Analysis (PCA).\nFollow along with the code below."
+  },
+  {
+    "objectID": "06_filtering-processing.html#filtering-by-gene-expression-with-rufilter",
+    "href": "06_filtering-processing.html#filtering-by-gene-expression-with-rufilter",
+    "title": "Filtering & Processing",
+    "section": "Filtering by Gene Expression with ruFilter()",
+    "text": "Filtering by Gene Expression with ruFilter()\n\n#These steps happen automatically within the Shiny App\n#doing them manually simply gives you more autonomy over the individual steps\n\n### FILTERING\n#here we filter for excitatory cells which are Slc17a7+\nmyobj &lt;- ruFilter(myobj, filter.by = 'Slc17a7', threshold = 0.1, exclude = c('RSC', 'LEC'))\n\n[1] \"Running gene exclusions...\"\n[1] \"Filtering data by Slc17a7 at threshold of 0.1...\"\n[1] \"Updating metadata...\"\n\n\nThis step will populate the @filteredData slot with the data frame filtered to only include cells with an Slc17a7 value &gt; 0.1\nIt will also exclude the filtering gene and any others that you choose to exclude. Here we have excluded the viral injection data as they are not indicitive of gene expression.\n\nhead(myobj@filteredData)\n\n       Nnat      Synpr      Pcp4      Cdh9      Ctgf    Slc17a6 Lxn   Slc30a3\n1 0.0000000  0.0000000 0.0000000 0.0000000 0.0000000 1.00420555   0 0.0000000\n2 0.0000000  0.2438931 0.4888655 0.2438931 0.4888655 0.73275862   0 0.0000000\n3 0.1613582  0.2426580 0.8893321 0.3233371 0.3233371 0.08067912   0 0.4040162\n4 0.0000000 12.5748426 0.0000000 0.0000000 0.0000000 0.00000000   0 0.0000000\n5 0.0000000  1.0240387 0.0000000 0.0000000 0.0000000 0.25628585   0 0.0000000\n6 0.1633744  0.4910062 2.2907735 0.6543805 0.0000000 0.32763183   0 0.0000000\n      Gfra1     Spon1      Gnb4 id\n1 0.3347352 0.6694704 0.6694704  3\n2 0.0000000 0.0000000 0.0000000  4\n3 0.0000000 3.1520710 2.0207016  5\n4 1.3976102 0.0000000 0.0000000  6\n5 0.0000000 0.0000000 0.0000000  7\n6 0.0000000 0.0000000 0.0000000  8\n\n\nThis step will also place any excluded variables into the @metaData slot and create a new $fil column that tells the user whether the cell is filtered out or not.\n\nhead(myobj@metaData)\n\n        X      Y id region   anum section RSC LEC   fil\n1 134.920 33.948  1    cla 123456       1   0   0 FALSE\n2 167.766 32.075  2    cla 123456       1   0   0 FALSE\n3 233.271 35.724  3    cla 123456       1   0   0  TRUE\n4 279.353 34.970  4    cla 123456       1   0   0  TRUE\n5 363.526 37.364  5    cla 123456       1   0   0  TRUE\n6 412.295 32.073  6    cla 123456       1   0   0  TRUE"
+  },
+  {
+    "objectID": "06_filtering-processing.html#normalization-and-pca-with-ruprocess",
+    "href": "06_filtering-processing.html#normalization-and-pca-with-ruprocess",
+    "title": "Filtering & Processing",
+    "section": "Normalization and PCA with ruProcess()",
+    "text": "Normalization and PCA with ruProcess()\nThis function will normalize the data (option of either “log” or “PAC”) as well as run a PCA.\n\nmyobj &lt;- ruProcess(myobj)\n\n[1] \"Normalizing the data...\"\n[1] \"Running PCA...\"\n[1] \"Updating metadata...\"\n\n\nFrom here the @filteredData slot will be updated with the normalized data. The attributes will also be updated to include the PCA itself (@attributes$pca) and the number of PC’s contributing ~95% variance to the data (@attributes$npc).\nWe can visualize this using plotVar(). The red line indicates the number of PCs that will automatically be used if the user doesn’t override this choice.\n\nplotVar(myobj)\n\n\n\n\n\n\n\n\n\n⟵ Previous: The goFISH App Next: Dimensionality Reduction & Clustering ⟶"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome!",
+    "section": "",
+    "text": "This is your hub for all FijiFISH and RUHi tutorials.\nSelect an image below to get started or choose a section from the navbar!\n\n\n\n  \n    \n      \n        \n        \n      \n      🎣 FijiFISH Tutorial 🎣\n    \n  \n\n  \n    \n      \n        \n        \n      \n      🎣 RUHi Tutorial 🎣"
+  },
+  {
+    "objectID": "04_segmentation.html",
+    "href": "04_segmentation.html",
+    "title": "Segmentation",
+    "section": "",
+    "text": "⟵ Previous: Registration Next: Quantification ⟶"
+  },
+  {
+    "objectID": "04_segmentation.html#video-tutorial",
+    "href": "04_segmentation.html#video-tutorial",
+    "title": "Segmentation",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nHere, we binarize and multiply our DAPI images to get only cells present in all three images for segmentation. Then, we select the region of tissue we would like to segment and the dilation value for the nuclei after they are segmented.\nIf using external segmentation methods, save the output as Fiji-readable ROIs named RoiSet.zip, place the file in a folder called analyzedTables, and skip straight to Quantification."
+  },
+  {
+    "objectID": "04_segmentation.html#segmentation",
+    "href": "04_segmentation.html#segmentation",
+    "title": "Segmentation",
+    "section": "Segmentation",
+    "text": "Segmentation\nThis option takes the registered DAPI images from the nonLinear folder and segments them.\nThe DAPI from each round will be binarized then multiplied by eachother to remove cells from out-of-focus planes.\nTO RUN:\n- Drag-and-drop R1_405_DAPI.tif_registered.tif_NL.tif from the nonLinear folder into FIJI and select Segmentation.\nRun from the nonLinear folder…\n├── max └── crop └── regImages ├── composite └── nonLinear__&lt;- drag DAPI file from this folder***__\nWHAT HAPPENS:\n- Segmentation Type: select DAPI\n- Segment based on DAPI signal from every round (to ensure registration in the z-axis)\n- If there is a round where DAPI is not segmentable, uncheck it - Threshold Type: binarize the images for segmentation\n- Automatic Thresholding\n- Manual Thresholding: (select threshold manually with a slider if some DAPI rounds look strange via Automatic Thresholding) - Dialation Value: dilate ROIs to include the surrounding cytosol\n- Suggested Value = 3 microns\n- For densly packed regions or nuclear expression only, change value to 0 microns\n\nSegmented image is saved in an analyzedImages folder\nSegmented ROIs are saved in analyzedTables folder\nIF USING EXTERNAL SEGMENTATION ALGORITHMS: for Baysor, Weka, or CellPose, place your Fiji-readable ROIs as RoiSet.zip in analyzedTables and skip straight to Quantification.\n\n\n⟵ Previous: Registration Next: Quantification ⟶"
+  },
+  {
+    "objectID": "03_reading-files.html",
+    "href": "03_reading-files.html",
+    "title": "Reading Files",
+    "section": "",
+    "text": "⟵ Previous: CSV File Formatting Next: The mFISH Object ⟶"
+  },
+  {
+    "objectID": "03_reading-files.html#video-tutorial",
+    "href": "03_reading-files.html#video-tutorial",
+    "title": "Reading Files",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nIn this video, we go over how to use ruRead() to take our multiple gene CSVs output from FijiFISH and amalgamate them into a single data frame.\nSee the code below to follow along with the analyses."
+  },
+  {
+    "objectID": "03_reading-files.html#reading-files-with-ruread",
+    "href": "03_reading-files.html#reading-files-with-ruread",
+    "title": "Reading Files",
+    "section": "Reading files with ruRead()",
+    "text": "Reading files with ruRead()\nWe will use ruRead() to read all of the gene expression FIJI Quantification files into a single data frame.\nThe primary argument is the path to the folder holding all of the gene CSVs from FijiFISH. You must also fill out at least three metadata variables for image identification during plotting and analysis down the line.\n\n####### STEP 1a: READING FILES FROM FIJI QUANTIFICATION #########\n#here we are using an example dataset from our 2021 eLife paper - https://elifesciences.org/articles/68967\n\n#the data is deposited both within this repository as well as on FigShare, but it is preferable to use your own files generated from FijiFISH!\n\nmydata &lt;- ruRead(\"data\", region = \"cla\", anum = \"123456\", section = \"1\")\n\n[1] \"The following files will be quantified:\"\n [1] \"R1_488_Nnat.tif_registered.tif_NL.tif_quantification.csv\"   \n [2] \"R1_550_Synpr.tif_registered.tif_NL.tif_quantification.csv\"  \n [3] \"R1_647_Pcp4.tif_registered.tif_NL.tif_quantification.csv\"   \n [4] \"R1_750_Slc17a7.tif_registered.tif_NL.tif_quantification.csv\"\n [5] \"R2_488_Cdh9.tif_registered.tif_NL.tif_quantification.csv\"   \n [6] \"R2_550_Ctgf.tif_registered.tif_NL.tif_quantification.csv\"   \n [7] \"R2_647_Slc17a6.tif_registered.tif_NL.tif_quantification.csv\"\n [8] \"R2_750_Lxn.tif_registered.tif_NL.tif_quantification.csv\"    \n [9] \"R3_488_Slc30a3.tif_registered.tif_NL.tif_quantification.csv\"\n[10] \"R3_550_Gfra1.tif_registered.tif_NL.tif_quantification.csv\"  \n[11] \"R3_647_Spon1.tif_registered.tif_NL.tif_quantification.csv\"  \n[12] \"R3_750_Gnb4.tif_registered.tif_NL.tif_quantification.csv\"   \n[13] \"R4_488_RSC.tif_registered.tif_NL.tif_quantification.csv\"    \n[14] \"R4_545_LEC.tif_registered.tif_NL.tif_quantification.csv\"    \n\n#make sure all your genes are names correctly before continuing\n#you should have columns named X,Y,id,region,section,anum and all of your genes\nhead(mydata)\n\n        X      Y      Nnat      Synpr      Pcp4    Slc17a7      Cdh9      Ctgf\n1 134.920 33.948 0.1834896  0.0000000 5.5177946  0.0000000 0.7358308 0.3679154\n2 167.766 32.075 0.0000000  0.0000000 0.0000000  0.0000000 2.1668655 0.0000000\n3 233.271 35.724 0.0000000  0.0000000 0.0000000  0.6694704 0.0000000 0.0000000\n4 279.353 34.970 0.0000000  0.2438931 0.4888655 13.1972094 0.2438931 0.4888655\n5 363.526 37.364 0.1613582  0.2426580 0.8893321 38.7961045 0.3233371 0.3233371\n6 412.295 32.073 0.0000000 12.5748426 0.0000000 23.0532699 0.0000000 0.0000000\n     Slc17a6 Lxn   Slc30a3     Gfra1     Spon1      Gnb4 RSC LEC region   anum\n1 0.73583077   0 0.0000000 0.0000000 1.1037462 0.0000000   0   0    cla 123456\n2 2.16686552   0 0.7216701 0.0000000 0.0000000 0.0000000   0   0    cla 123456\n3 1.00420555   0 0.0000000 0.3347352 0.6694704 0.6694704   0   0    cla 123456\n4 0.73275862   0 0.0000000 0.0000000 0.0000000 0.0000000   0   0    cla 123456\n5 0.08067912   0 0.4040162 0.0000000 3.1520710 2.0207016   0   0    cla 123456\n6 0.00000000   0 0.0000000 1.3976102 0.0000000 0.0000000   0   0    cla 123456\n  section id\n1       1  1\n2       1  2\n3       1  3\n4       1  4\n5       1  5\n6       1  6\n\n#feel free to add extra metadata for your section at this point with dplyr::mutate()\n\nIn the plausible case where we have multiple images that we want to analyze together, we will use ruCombine() to concatenate multiple data frames from separate experiments.\nEnsure that the analyzed tables from each experiment are in their own separate folders. Then generate a data frame for each using ruRead(). Finally, concatenate them together using ruCombine().\nIMPORTANT: Ensure you have unique section ids for each image in the metadata so you can properly separate each image from another in the downstream analysis\n####### STEP 1b: COMBINING MULTIPLE SECTIONS #######\n#if you have multiple sections you can save multiple experiments as a data.frame using ruRead()\n#to combine them use: \n\ncombo &lt;- ruCombine(c(data1, data2, data3))\n\n⟵ Previous: CSV File Formatting Next: The mFISH Object ⟶"
+  },
+  {
+    "objectID": "01_installation-ruhi.html",
+    "href": "01_installation-ruhi.html",
+    "title": "Installing RUHi",
+    "section": "",
+    "text": "⟵ Previous: Overlay (FijiFISH) Next: CSV File Formatting ⟶"
+  },
+  {
+    "objectID": "01_installation-ruhi.html#video-tutorial",
+    "href": "01_installation-ruhi.html#video-tutorial",
+    "title": "Installing RUHi",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nThe RUHi package can be installed from either the cembrowskilab or kaitsull repos. You can install the latest version directly from GitHub using the devtools package.\nSee below for copy-and-paste code to follow along with the video!"
+  },
+  {
+    "objectID": "01_installation-ruhi.html#step-by-step-code",
+    "href": "01_installation-ruhi.html#step-by-step-code",
+    "title": "Installing RUHi",
+    "section": "Step-by-Step Code",
+    "text": "Step-by-Step Code\n\nStep 1: Install from GitHub\nMake sure you have devtools installed:\ninstall.packages(\"devtools\")\nThen install RUHi:\ndevtools::install_github(\"kaitsull/RUHi\")\n\n\nStep 2: Load the Package\nlibrary(RUHi)"
+  },
+  {
+    "objectID": "01_installation-ruhi.html#updating-the-package",
+    "href": "01_installation-ruhi.html#updating-the-package",
+    "title": "Installing RUHi",
+    "section": "Updating the Package",
+    "text": "Updating the Package\nIf you already have RUHi installed and want to update it:\n# Remove the old version\nremove.packages(\"RUHi\")\n\n# Install the latest version\ndevtools::install_github(\"kaitsull/RUHi\")"
+  },
+  {
+    "objectID": "01_installation-ruhi.html#downloading-errors",
+    "href": "01_installation-ruhi.html#downloading-errors",
+    "title": "Installing RUHi",
+    "section": "Downloading Errors",
+    "text": "Downloading Errors\nIf you recieve the following error:\n\nUsing github PAT from envvar GITHUB_PAT\nError: Failed to install ‘unknown package’ from GitHub:\nHTTP error 401. Bad credentials.\n\nUse the following line of code:\nSys.unsetenv(\"GITHUB_PAT\")\ndevtools::install_github(\"cembrowskilab/RUHi\")\n\n⟵ Previous: Overlay (FijiFISH) Next: CSV File Formatting ⟶"
+  },
+  {
+    "objectID": "07_dimred-clustering.html",
+    "href": "07_dimred-clustering.html",
+    "title": "Dimensionality Reduction & Clustering",
+    "section": "",
+    "text": "⟵ Previous: Filtering & Processing Next: Visualization ⟶"
+  },
+  {
+    "objectID": "07_dimred-clustering.html#video-tutorial",
+    "href": "07_dimred-clustering.html#video-tutorial",
+    "title": "Dimensionality Reduction & Clustering",
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nThe following video tutorial demonstrates the functionality of ruUMAP() and ruCluster(), two functions that dimensionally reduce and hierarchically (method = “ward.D2”) cluster the data.\nNote that UMAPs have built-in stochasticity, meaning they will look different between computers\nFollow along with the code below."
+  },
+  {
+    "objectID": "07_dimred-clustering.html#running-a-umap-with-ruumap",
+    "href": "07_dimred-clustering.html#running-a-umap-with-ruumap",
+    "title": "Dimensionality Reduction & Clustering",
+    "section": "Running a UMAP with ruUMAP()",
+    "text": "Running a UMAP with ruUMAP()\nOnce run, you can access the UMAP coordinates in the attributes (@attributes$umap).\n\n#populate attributes with UMAP for plotting\n#you can use the optional argument npc to  select more or less PCs\nmyobj &lt;- ruUMAP(myobj)\n\n[1] \"Altering UMAP configurations...\"\n[1] \"Running UMAP...\"\n[1] \"Saving custom configuration...\""
+  },
+  {
+    "objectID": "07_dimred-clustering.html#clustering-with-rucluster",
+    "href": "07_dimred-clustering.html#clustering-with-rucluster",
+    "title": "Dimensionality Reduction & Clustering",
+    "section": "Clustering with ruCluster()",
+    "text": "Clustering with ruCluster()\nThis function clusters the data using ward D2 hierarchical clustering. Select a number of clusters you beleive the data might have. Once run, a new @metaData column will be generated.\nTo refine the number of clusters, check the dendrogram with plotDendro() and re-run ruCluster() as many times as you see fit.\n\n#populate metaData with cluster column\nmyobj &lt;- ruCluster(myobj, k = 5)\n\n[1] \"Clustering...\"\n\n#check the dendrogram to see if you agree with number of clusters\nplotDendro(myobj)\n\n[1] \"Creating dendrogram...\"\n[1] \"Plotting...\"\n[1] \"Please wait, this may take a while...\"\n\n\n\n\n\n\n\n\n\n\n⟵ Previous: Filtering & Processing Next: Visualization ⟶"
+  }
+]
