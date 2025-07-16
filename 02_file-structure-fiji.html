@@ -208,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="video-tutorial" class="level2">
 <h2 class="anchored" data-anchor-id="video-tutorial">Video Tutorial</h2>
-<p>All images used in the tutorial, as well as in the paper, can be found on <a href="https://figshare.com/articles/dataset/Downsampled_images_for_FijiFISH_tutorial/28910930">FigShare</a>.</p>
+<p>All images used in the tutorial, as well as in the paper, can be found on FigShare: <a href="https://figshare.com/articles/dataset/Downsampled_images_for_FijiFISH_tutorial/28910930">down-sampled</a> and <a href="https://figshare.com/account/projects/247085/articles/28910936">full sized</a> images.</p>
 <p>Review the following important information below for formatting conventions for FijiFISH as well as tips on how to ensure a smooth process from start to finish.</p>
 <div class="center">
 <iframe src="https://www.youtube.com/embed/kjH3aKzXaSM" width="640" height="360" allowfullscreen="">
@@ -323,7 +323,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/kaitsull\.github\.io\/VideoTutorials\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

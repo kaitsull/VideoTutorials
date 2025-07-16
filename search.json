@@ -53,7 +53,7 @@
     "href": "02_file-structure-fiji.html#video-tutorial",
     "title": "File Formatting",
     "section": "Video Tutorial",
-    "text": "Video Tutorial\nAll images used in the tutorial, as well as in the paper, can be found on FigShare.\nReview the following important information below for formatting conventions for FijiFISH as well as tips on how to ensure a smooth process from start to finish."
+    "text": "Video Tutorial\nAll images used in the tutorial, as well as in the paper, can be found on FigShare: down-sampled and full sized images.\nReview the following important information below for formatting conventions for FijiFISH as well as tips on how to ensure a smooth process from start to finish."
   },
   {
     "objectID": "02_file-structure-fiji.html#file-conventions",
@@ -161,11 +161,25 @@
     "text": "⟵ Previous: Visualization"
   },
   {
-    "objectID": "09_geographic-analysis.html#tutorial-here",
-    "href": "09_geographic-analysis.html#tutorial-here",
+    "objectID": "09_geographic-analysis.html#video-tutorial",
+    "href": "09_geographic-analysis.html#video-tutorial",
     "title": "Geographic Analysis",
-    "section": "Tutorial here :)",
-    "text": "Tutorial here :)\n\n⟵ Previous: Visualization"
+    "section": "Video Tutorial",
+    "text": "Video Tutorial\nThe following video tutorial demonstrates how to perform and visualize a basic geometric analysis in RUHi for your mFISH object. It also demonstrates how to add custom metadata to your mFISH object."
+  },
+  {
+    "objectID": "09_geographic-analysis.html#geographic-analysis-tutorial",
+    "href": "09_geographic-analysis.html#geographic-analysis-tutorial",
+    "title": "Geographic Analysis",
+    "section": "Geographic Analysis Tutorial",
+    "text": "Geographic Analysis Tutorial\n\nLoad additional libraries for creating polished plots\n\n# To get started, load the ggplot2 and scales packages\n# note: if you get \"Error in library(...) : there is no package called\" \n# please install the packages first!\nlibrary(ggplot2)\nlibrary(scales)\n\n\n\nExtracting cell spatial coordinates with getCoords()\nGet cell coordinates, cluster ID and metadata information from an mFISH object, and optionally rotate cell XY coordinates.\n\nThis function will return a dataframe with XY coordinates, cell ID, cluster ID, and metadata (anum, etc.) for a single mFISH object section. If rotate_coords = TRUE, the adjusted XY coordinates will be stored in your dataframe output, and visualized in the plot.\n\nNote: cluster NA are cells that were not filtered based on your specified PAC threshold upon creating the mFISH class object, and running ruFilter().\n\n# Optionally rotate your section coordinates by specifying: \n# rotate_coords = TRUE, and your desired rotation with theta_deg = 90. \n# (Example: coordsSection_1 &lt;- getCoords(myobj, section_id = \"1\", rotate_coords = TRUE, theta_deg = 90)\ncoordsSection_1 &lt;- getCoords(original_mfish_obj = myobj, section_id = \"1\", rotate_coords = F)\n\nCoordinates have been stored.\n\n\n\n\n\n\n\n\n\nPlease name the dataframe as: coordsSection_1\n\n\n\n\nPerform geometric analysis with analyzeDistance()\nCalculate the distance along and away from a user-defined boundary using mFISH cell coordinates. This is used to investigate spatial relationships between cells. This can be performed to identify cell distances away from a unique ROI, a nucleus edge, distance from white matter or pial surface, etc!\nOnce you run this function, your section’s cells will be plotted in space coloured according to cluster. You will be prompted to point-and-click your landmarks to define your boundary. Once this is completed, directly hit the ESC key on your keyboard.\nThe final output of this function is a dataframe with cell ID, coordinates, cluster ID, distance along and distance away from your defined boundary. Distance metrics are available as raw (microns) and normalized (0-1) outputs. See below for details.\n\nRunning this function will compute 4 metrics:distance_to_boundary, distance_along_boundary, normalized_distance_to_boundary & normalized_distance_along_boundary. (Normalized to the range of distances along/to the boundary per section; values will range from 0–1).\n\n\nIt will also save 4 plots in your working directory:\n1. Histogram of distances to boundary\n2. Histogram of distances along boundary\n3. Cell IDs in section, color-coded by distance to boundary\n4. Cell IDs in section, color-coded by distance along boundary\n\n\n# You can also specify which cluster numbers to highlight \n# and specify the highlight colour. The default colour is black. \n# (Example: section1data &lt;- analyzeDistance(\"section1\", coordsSection_1, highlight_cluster.1 = 1, highlight_cluster.2 = 2, highlight_colour = 'black')\nsection1data &lt;- analyzeDistance(\"section1\", coordsSection_1)\n#### To change plot save location: update your working directory using setwd('path/to/folder') ####\n\n\n\n\nSaving 7 x 5 in image\nSaving 7 x 5 in image\nSaving 7 x 5 in image\nSaving 7 x 5 in image\nName this file as:\n\n\n[1] \"section1data\"\n\n\n\n\nOptional for polished plots: perform custom normalization, and visualize geometric analysis results using ggplot()\n\n#### These steps can be skipped depending on analysis needs ####\n# For a core/shell analysis, shift distance_to_boundary\n# values so that the minimum value becomes zero. This simplifies the distance to centre\n# values for further visualizations.\nsection1data$distance_to_centre &lt;- section1data$distance_to_boundary - \n  min(section1data$distance_to_boundary)\n\n# Plot the cells in the section, coloured by distance_to_centre values\nggplot(section1data, aes(x = x, y = y, col = distance_to_centre)) +\n  geom_point() +\n  scale_color_viridis_c() +  \n  theme_minimal()\n\n\n\n\n\n\n\n# You can also adjust legend colour limits, flip to match the raw \n# confocal microscopy image, and fix the aspect ratio for a polished plot.\nggplot(section1data, aes(x = x, y = y, col = distance_to_centre)) +\n  geom_point() +\n  scale_color_viridis_c(\n    limits = c(0, 350),      \n    oob = scales::squish) +\n    theme_minimal()+\n    scale_y_reverse()+\n    coord_fixed()\n\n\n\n\n\n\n\n# Create boxplots displaying distance to centre data grouped by cluster ID\nggplot(section1data, aes(x = factor(cluster), y = distance_to_centre, fill = factor(cluster))) +\n  geom_boxplot(outlier.shape = NA) +\n  labs(x = \"Cluster ID\", y = \"Distance to boundary\")+\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\nOptional step for data with multiple sections: merge section data together using rbind()\n\n#### Only needed if you have multiple sections ####\nallSectionData &lt;- rbind(section2data, section3data)\n\n\n\nAdd geometric analysis output (or any custom metadata) back to a class mFISH object using metaAdd()\nMetadata is added based on matching cell IDs. For cells without corresponding metadata (e.g., when metadata applies to only a subset of cells), the associated values will be stored as myobj@metaData$variable = NA.\n\nmyobj &lt;- metaAdd(mfish_object = myobj,\n                 metadata_to_add = section1data,\n                 metadata_variables_to_add = \"distance_to_centre\")\n\nNew metadata added to mFISH object!\n\n\nNote: If you are updating or overwriting existing metadata currently stored in an mfish object, first clear the metadata slot: myobj@metaData$distance_to_centre = NULL and then add metadata with the code above.\n\n\nVisualize our mFISH data UMAP coloured by geometric analysis metadata using plotDim()\n\nplotDim(myobj, colour.by = 'distance_to_centre')\n\n\n\n\n\n\n\n# Optionally: change the colour scale for a polished plot:\nplotDim(myobj, colour.by = 'distance_to_centre') +\n  coord_fixed() +\n  scale_colour_viridis_c(limits = c(0, 350), oob = scales::squish)\n\nScale for colour is already present.\nAdding another scale for colour, which will replace the existing scale."
+  },
+  {
+    "objectID": "09_geographic-analysis.html#visualize-our-mfish-cells-coloured-by-geometric-analysis-metadata-using-plotspace",
+    "href": "09_geographic-analysis.html#visualize-our-mfish-cells-coloured-by-geometric-analysis-metadata-using-plotspace",
+    "title": "Geographic Analysis",
+    "section": "Visualize our mFISH cells coloured by geometric analysis metadata using plotSpace()",
+    "text": "Visualize our mFISH cells coloured by geometric analysis metadata using plotSpace()\n\nplotSpace(myobj, colour.by = \"distance_to_centre\")\n\n\n\n\n\n\n\n\n\n⟵ Previous: Visualization"
   },
   {
     "objectID": "04_mfish-object.html",
@@ -298,14 +312,14 @@
     "href": "01_installation-ruhi.html#updating-the-package",
     "title": "Installing RUHi",
     "section": "Updating the Package",
-    "text": "Updating the Package\nIf you already have RUHi installed and want to update it:\n# Remove the old version\nremove.packages(\"RUHi\")\n\n# Install the latest version\ndevtools::install_github(\"kaitsull/RUHi\")"
+    "text": "Updating the Package\nIf you already have RUHi installed and want to update it:\n# Remove the old version\nremove.packages(\"RUHi\")\n\n# Install the latest version\ndevtools::install_github(\"cembrowskilab/RUHi\")"
   },
   {
     "objectID": "01_installation-ruhi.html#downloading-errors",
     "href": "01_installation-ruhi.html#downloading-errors",
     "title": "Installing RUHi",
     "section": "Downloading Errors",
-    "text": "Downloading Errors\nIf you recieve the following error:\n\nUsing github PAT from envvar GITHUB_PAT\nError: Failed to install ‘unknown package’ from GitHub:\nHTTP error 401. Bad credentials.\n\nUse the following line of code:\nSys.unsetenv(\"GITHUB_PAT\")\ndevtools::install_github(\"cembrowskilab/RUHi\")\n\n⟵ Previous: Overlay (FijiFISH) Next: CSV File Formatting ⟶"
+    "text": "Downloading Errors\nIf you receive the following error:\n\nUsing github PAT from envvar GITHUB_PAT\nError: Failed to install ‘unknown package’ from GitHub:\nHTTP error 401. Bad credentials.\n\nUse the following line of code:\nSys.unsetenv(\"GITHUB_PAT\")\ndevtools::install_github(\"cembrowskilab/RUHi\")\n\n⟵ Previous: Overlay (FijiFISH) Next: CSV File Formatting ⟶"
   },
   {
     "objectID": "07_dimred-clustering.html",
