@@ -15,8 +15,10 @@ The RUHi package can be installed from either the cembrowskilab or kaitsull repo
 
 See below for copy-and-paste code to follow along with the video!
 
-::: {.center}
-<iframe src="https://www.youtube.com/embed/RyQc9qPESL4" width="640" height="360" allowfullscreen></iframe>
+::: center
+<iframe src="https://www.youtube.com/embed/RyQc9qPESL4" width="640" height="360" allowfullscreen>
+
+</iframe>
 :::
 
 ## Step-by-Step Code
@@ -50,12 +52,12 @@ If you already have RUHi installed and want to update it:
 remove.packages("RUHi")
 
 # Install the latest version
-devtools::install_github("kaitsull/RUHi")
+devtools::install_github("cembrowskilab/RUHi")
 ```
 
 ## Downloading Errors
 
-If you recieve the following error:
+If you receive the following error:
 
 > Using github PAT from envvar GITHUB_PAT\
 > Error: Failed to install 'unknown package' from GitHub:\

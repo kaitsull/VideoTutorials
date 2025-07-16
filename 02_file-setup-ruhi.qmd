@@ -11,14 +11,16 @@ editor: visual
 
 ## Video Tutorial
 
-For every image you analyze: create a new folder and copy-and-paste your analyzed tables into it. Include  unique identifiers for the image such as animal/patient number and experimental condition, along with a unique tissue section id to help keep track of which folders contain each image. 
+For every image you analyze: create a new folder and copy-and-paste your analyzed tables into it. Include unique identifiers for the image such as animal/patient number and experimental condition, along with a unique tissue section id to help keep track of which folders contain each image.
 
-For this tutorial, use the tables you generated during FijiFISH Quantification, or use the tables found [here](https://figshare.com/account/projects/247085/articles/28911218) as well as in the [GitHub repo](https://www.github.com/kaitsull/RUHi/data). 
+For this tutorial, use the tables you generated during FijiFISH Quantification, or use the tables found [here](https://figshare.com/articles/dataset/CSVs_i_FijiFISH_analyzedTables_i_from_full_size_images/28911227) as well as in the [GitHub repo](https://github.com/kaitsull/VideoTutorials/tree/main/data).
 
 The FigShare and repo tables are done using the full-sized image data, and thus might yield better analysis results.
 
-::: {.center}
-<iframe src="https://www.youtube.com/embed/099XWrRwKoo" width="640" height="360" allowfullscreen></iframe>
+::: center
+<iframe src="https://www.youtube.com/embed/099XWrRwKoo" width="640" height="360" allowfullscreen>
+
+</iframe>
 :::
 
 ::: {style="display: flex; justify-content: space-between; margin-top: 2em;"}

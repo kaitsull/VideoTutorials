@@ -13,8 +13,10 @@ The FijiFISH macro package is installed as a dropdown menu on your Fiji toolbar.
 
 See below for written instructions.
 
-::: {.center}
-<iframe src="https://www.youtube.com/embed/dGNY2dSX9QM" width="640" height="360" allowfullscreen></iframe>
+::: center
+<iframe src="https://www.youtube.com/embed/dGNY2dSX9QM" width="640" height="360" allowfullscreen>
+
+</iframe>
 :::
 
 ### Permanent

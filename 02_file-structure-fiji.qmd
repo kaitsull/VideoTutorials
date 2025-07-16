@@ -11,12 +11,14 @@ editor: visual
 
 ## Video Tutorial
 
-All images used in the tutorial, as well as in the paper, can be found on [FigShare](https://figshare.com/articles/dataset/Downsampled_images_for_FijiFISH_tutorial/28910930).
+All images used in the tutorial, as well as in the paper, can be found on FigShare: [down-sampled](https://figshare.com/articles/dataset/Downsampled_images_for_FijiFISH_tutorial/28910930) and [full sized](https://figshare.com/account/projects/247085/articles/28910936) images.
 
 Review the following important information below for formatting conventions for FijiFISH as well as tips on how to ensure a smooth process from start to finish.
 
-::: {.center}
-<iframe src="https://www.youtube.com/embed/kjH3aKzXaSM" width="640" height="360" allowfullscreen></iframe>
+::: center
+<iframe src="https://www.youtube.com/embed/kjH3aKzXaSM" width="640" height="360" allowfullscreen>
+
+</iframe>
 :::
 
 ## File Conventions
