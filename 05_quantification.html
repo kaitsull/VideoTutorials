@@ -217,7 +217,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="quantification" class="level2">
 <h2 class="anchored" data-anchor-id="quantification"><code>Quantification</code></h2>
 <p>This option takes individual gene expression images from the <code>nonLinear</code> folder and quantifies their expression into tables saved in the <code>analyzedTables</code> folder.</p>
-<p><em>Run from the <code>nonLinear</code> folder…</em> ├── <code>max</code><br>
+<p><em>Run from the <code>nonLinear</code> folder…</em></p>
+<p>├── <code>max</code><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <code>crop</code><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <code>regImages</code><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>composite</code><br>
@@ -228,8 +229,11 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>WHAT HAPPENS:</strong><br>
 - <code>Automatic thresholding</code> will take the provided tail of the image’s cumulative histogram via <em>MaxEntropy</em><br>
 - <code>Manual thresholding</code> allows one to manually select the threshold for each image (<em>useful in cases of autofluorescence</em>)</p>
-<p><strong>OUTPUT:</strong><br>
-- Quantified tables for <a href="https://github.com/cembrowskilab/RUHi"><code>RUHi</code></a> analysis in <code>analyzedTables</code> folder<code>-   Quantified image overlays for quality control in the</code>analyzedImages` folder</p>
+<p><strong>OUTPUT:</strong></p>
+<ul>
+<li><p>Quantified tables for <a href="https://github.com/cembrowskilab/RUHi"><code>RUHi</code></a> analysis in <code>analyzedTables</code> folder</p></li>
+<li><p>Quantified image overlays for quality control in the <code>analyzedImages</code> folder</p></li>
+</ul>
 <div style="display: flex; justify-content: space-between; margin-top: 2em;">
 <p><a href="./04_segmentation.html" class="btn btn-outline-secondary">⟵ Previous: Segmentation</a> <a href="./06_overlay.html" class="btn btn-primary">Next: Overlays ⟶</a></p>
 </div>
